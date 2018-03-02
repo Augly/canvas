@@ -5,16 +5,30 @@ let lastPoint = { x: undefined, y: undefined }
 let eraserEnabled = false
 let actions = document.querySelector('.actions')
 let eraser = document.querySelector('#eraser')
+let clear = document.querySelector('#clear')
+let download = document.querySelector('#download')
 
 let colors = document.querySelector('.colors')
 
+clear.addEventListener('click', function() {
+  context.clearRect(0, 0, canvas.width, canvas.height)
+})
 
+download.addEventListener('click', function() {
+  let url = canvas.toDataURL('images/png', 1.0)
+  let a = document.createElement('a')
+  document.body.appendChild(a)
+  a.href = url
+  a.download = "我的画"
+  a.click()
+})
 
 eraser.addEventListener('click', function () {
   eraserEnabled = true
   eraser.classList.add('active')
   pen.classList.remove('active')
 })
+
 pen.addEventListener('click', function () {
   eraserEnabled = false
   pen.classList.add('active')

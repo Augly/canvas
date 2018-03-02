@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0， user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="//at.alicdn.com/t/font_578691_xdurmie2vdpiizfr.js"></script>
+  <script src="//at.alicdn.com/t/font_578691_uz47rpou92cpu8fr.js"></script>
   <title>Canvas</title>
   <style>
     * {
@@ -13,9 +13,11 @@
       margin: 0;
       -webkit-tap-highlight-color: transparent;
     }
+
     ul {
       list-style: none;
     }
+
     .icon {
       width: 1em;
       height: 1em;
@@ -41,10 +43,12 @@
       margin: 0 10px;
       transition: all .3s;
     }
+
     .actions svg.active {
       fill: red;
       transform: scale(1.2)
     }
+
     .colors {
       position: fixed;
       top: 60px;
@@ -53,28 +57,33 @@
       margin-top: 10px;
     }
 
-    .colors li{
+    .colors li {
       width: 20px;
       height: 20px;
       border: 1px solid #aaa;
       margin: 0 10px;
       border-radius: 50%;
     }
-    .colors li.red{
+
+    .colors li.red {
       background: red;
     }
-    .colors li.green{
+
+    .colors li.green {
       background: green;
     }
-    .colors li.blue{
+
+    .colors li.blue {
       background: blue;
     }
-    .colors li.black{
+
+    .colors li.black {
       background: black;
     }
-    .colors li.active{
+
+    .colors li.active {
       transform: scale(1.3);
-      box-shadow: 0 3px 5px 0 rgba(0,0,0,0.3);
+      box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
     }
   </style>
 </head>
@@ -87,6 +96,12 @@
     </svg>
     <svg id="eraser" class="icon">
       <use xlink:href="#icon-eraser"></use>
+    </svg>
+    <svg id="clear" class="icon">
+      <use xlink:href="#icon-clear"></use>
+    </svg>
+    <svg id="download" class="icon">
+      <use xlink:href="#icon-download"></use>
     </svg>
   </div>
   <ul class="colors">
