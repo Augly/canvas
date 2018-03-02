@@ -10,9 +10,12 @@
   <style>
     * {
       padding: 0;
-      margin: 0
+      margin: 0;
+      -webkit-tap-highlight-color: transparent;
     }
-
+    ul {
+      list-style: none;
+    }
     .icon {
       width: 1em;
       height: 1em;
@@ -23,7 +26,6 @@
 
     #canvas {
       vertical-align: middle;
-      -webkit-tap-highlight-color: transparent;
     }
 
     .actions {
@@ -43,6 +45,37 @@
       fill: red;
       transform: scale(1.2)
     }
+    .colors {
+      position: fixed;
+      top: 60px;
+      left: 18px;
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .colors li{
+      width: 20px;
+      height: 20px;
+      border: 1px solid #aaa;
+      margin: 0 10px;
+      border-radius: 50%;
+    }
+    .colors li.red{
+      background: red;
+    }
+    .colors li.green{
+      background: green;
+    }
+    .colors li.blue{
+      background: blue;
+    }
+    .colors li.black{
+      background: black;
+    }
+    .colors li.active{
+      transform: scale(1.3);
+      box-shadow: 0 3px 5px 0 rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 
@@ -56,6 +89,12 @@
       <use xlink:href="#icon-eraser"></use>
     </svg>
   </div>
+  <ul class="colors">
+    <li id="black" class="black active"></li>
+    <li id="red" class="red"></li>
+    <li id="green" class="green"></li>
+    <li id="blue" class="blue"></li>
+  </ul>
   <script src="./main.js"></script>
 </body>
 

@@ -5,7 +5,10 @@ let lastPoint = { x: undefined, y: undefined }
 let eraserEnabled = false
 let actions = document.querySelector('.actions')
 let eraser = document.querySelector('#eraser')
-let pen = document.querySelector('#pen')
+
+let colors = document.querySelector('.colors')
+
+
 
 eraser.addEventListener('click', function () {
   eraserEnabled = true
@@ -17,6 +20,41 @@ pen.addEventListener('click', function () {
   pen.classList.add('active')
   eraser.classList.remove('active')
 })
+
+colors.addEventListener('click', function (event) {
+  switch (event.target.id ) {
+    case "black":
+    removeClass()
+    event.target.classList.add('active')
+    context.strokeStyle = "black"
+    break
+
+    case "red" :
+    removeClass()
+    event.target.classList.add('active')
+    context.strokeStyle = "red"
+    break
+
+    case "green" :
+    removeClass()
+    event.target.classList.add('active')
+    context.strokeStyle = "green"
+    break
+
+    case "blue" :
+    removeClass()
+    event.target.classList.add('active')
+    context.strokeStyle = "blue"
+    break
+  }
+    
+})
+
+function removeClass () {
+  for (let i = 0; i < colors.children.length; i++) {
+    colors.children[i].classList.remove('active')
+  }
+}
 
 setCanvasSize()
 
@@ -105,7 +143,6 @@ function setCanvasSize() {
 
 function drawLine(x1, y1, x2, y2) {
   context.beginPath()
-  context.strokeStyle = "black"
   context.moveTo(x1, y1)
   context.lineWidth = 5
   context.lineTo(x2, y2)
