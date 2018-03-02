@@ -18,38 +18,77 @@ brush.addEventListener('click', function () {
 
 setCanvasSize()
 
-canvas.addEventListener('mousedown', function (event) {
-  let x = event.clientX
-  let y = event.clientY
-  isUsing = true
-  if (eraserEnabled) {
-    context.clearRect(x - 5, y - 5, 10, 10)
-  } else {
-    lastPoint.x = x
-    lastPoint.y = y
-  }
-})
-
-canvas.addEventListener('mousemove', function () {
-  let x = event.clientX
-  let y = event.clientY
-  if (!isUsing) { return }
-  if (eraserEnabled) {
-    if (isUsing) {
+if ('ontouchstart' in document.documentElement) {
+  canvas.addEventListener('touchstart', function (event) {
+    console.log(event)
+    let x = event.touches[0].clientX
+    let y = event.touches[0].clientY
+    isUsing = true
+    if (eraserEnabled) {
       context.clearRect(x - 5, y - 5, 10, 10)
+    } else {
+      lastPoint.x = x
+      lastPoint.y = y
     }
-  } else {
-    let newPoint = { x: undefined, y: undefined }
-    newPoint.x = x
-    newPoint.y = y
-    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
-    lastPoint = newPoint
-  }
-})
+  })
 
-canvas.addEventListener('mouseup', function () {
-  isUsing = false
-})
+  canvas.addEventListener('touchmove', function (event) {
+    event.preventDefault()
+    let x = event.touches[0].clientX
+    let y = event.touches[0].clientY
+    if (!isUsing) { return }
+    if (eraserEnabled) {
+      if (isUsing) {
+        context.clearRect(x - 5, y - 5, 10, 10)
+      }
+    } else {
+      let newPoint = { x: undefined, y: undefined }
+      newPoint.x = x
+      newPoint.y = y
+      drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
+      lastPoint = newPoint
+    }
+  }, false)
+  
+  canvas.addEventListener('touchend', function () {
+    isUsing = false
+  })
+
+
+} else {
+  canvas.addEventListener('mousedown', function (event) {
+    let x = event.clientX
+    let y = event.clientY
+    isUsing = true
+    if (eraserEnabled) {
+      context.clearRect(x - 5, y - 5, 10, 10)
+    } else {
+      lastPoint.x = x
+      lastPoint.y = y
+    }
+  })
+  
+  canvas.addEventListener('mousemove', function () {
+    let x = event.clientX
+    let y = event.clientY
+    if (!isUsing) { return }
+    if (eraserEnabled) {
+      if (isUsing) {
+        context.clearRect(x - 5, y - 5, 10, 10)
+      }
+    } else {
+      let newPoint = { x: undefined, y: undefined }
+      newPoint.x = x
+      newPoint.y = y
+      drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
+      lastPoint = newPoint
+    }
+  })
+  
+  canvas.addEventListener('mouseup', function () {
+    isUsing = false
+  })
+}
 
 function setCanvasSize() {
   autoSize()
