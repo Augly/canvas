@@ -5,27 +5,28 @@ let lastPoint = { x: undefined, y: undefined }
 let eraserEnabled = false
 let actions = document.querySelector('.actions')
 let eraser = document.querySelector('#eraser')
-let brush = document.querySelector('#brush')
+let pen = document.querySelector('#pen')
 
 eraser.addEventListener('click', function () {
   eraserEnabled = true
-  actions.classList.add('active')
+  eraser.classList.add('active')
+  pen.classList.remove('active')
 })
-brush.addEventListener('click', function () {
+pen.addEventListener('click', function () {
   eraserEnabled = false
-  actions.classList.remove('active')
+  pen.classList.add('active')
+  eraser.classList.remove('active')
 })
 
 setCanvasSize()
 
 if ('ontouchstart' in document.documentElement) {
   canvas.addEventListener('touchstart', function (event) {
-    console.log(event)
     let x = event.touches[0].clientX
     let y = event.touches[0].clientY
     isUsing = true
     if (eraserEnabled) {
-      context.clearRect(x - 5, y - 5, 10, 10)
+      context.clearRect(x - 10, y - 10, 20, 20)
     } else {
       lastPoint.x = x
       lastPoint.y = y
@@ -39,7 +40,7 @@ if ('ontouchstart' in document.documentElement) {
     if (!isUsing) { return }
     if (eraserEnabled) {
       if (isUsing) {
-        context.clearRect(x - 5, y - 5, 10, 10)
+        context.clearRect(x - 10, y - 10, 20, 20)
       }
     } else {
       let newPoint = { x: undefined, y: undefined }

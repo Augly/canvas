@@ -1,41 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0， user-scalable=no, minimum-scale=1.0" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0， user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="//at.alicdn.com/t/font_578691_xdurmie2vdpiizfr.js"></script>
   <title>Canvas</title>
   <style>
-    * {padding:0; margin:0}
+    * {
+      padding: 0;
+      margin: 0
+    }
+
+    .icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+    }
+
     #canvas {
-      background: green;
       vertical-align: middle;
       -webkit-tap-highlight-color: transparent;
     }
+
     .actions {
       position: fixed;
-      bottom: 0;
+      top: 0;
       left: 0;
+      padding: 20px;
     }
 
-    .actions #brush {
-      display: none;
+    .actions svg {
+      width: 1.5em;
+      height: 1.5em;
+      margin: 0 10px;
+      transition: all .3s;
     }
-
-    .actions.active #brush {
-      display: inline-block;
-    }
-    .actions.active #eraser {
-      display: none;
+    .actions svg.active {
+      fill: red;
+      transform: scale(1.2)
     }
   </style>
 </head>
+
 <body>
   <canvas id="canvas" width="500" height="500"></canvas>
   <div class="actions">
-    <button id="eraser">橡皮擦</button>
-  <button id="brush">画笔</button>
+    <svg id="pen" class="icon active">
+      <use xlink:href="#icon-pen"></use>
+    </svg>
+    <svg id="eraser" class="icon">
+      <use xlink:href="#icon-eraser"></use>
+    </svg>
   </div>
   <script src="./main.js"></script>
 </body>
+
 </html>
