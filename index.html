@@ -85,6 +85,27 @@
       transform: scale(1.3);
       box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
     }
+
+    .lines {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+    }
+    .lines li {
+      margin-bottom: 20px;
+      transition: all .3s;
+    }
+    .lines #thin {
+      width: 60px;
+      border-top: 5px solid black;
+    }
+    .lines #thick {
+      width: 60px;
+      border-top: 10px solid black;
+    }
+    .lines li.active {
+      transform: scaleX(1.3)
+    }
   </style>
 </head>
 
@@ -109,6 +130,10 @@
     <li id="red" class="red"></li>
     <li id="green" class="green"></li>
     <li id="blue" class="blue"></li>
+  </ul>
+  <ul class="lines">
+    <li id="thin" class="active"></li>
+    <li id="thick"></li>
   </ul>
   <script src="./main.js"></script>
 </body>

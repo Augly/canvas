@@ -3,12 +3,28 @@ let context = canvas.getContext('2d')
 let isUsing = false  // 状态锁
 let lastPoint = { x: undefined, y: undefined }
 let eraserEnabled = false
+
 let actions = document.querySelector('.actions')
 let eraser = document.querySelector('#eraser')
 let clear = document.querySelector('#clear')
 let download = document.querySelector('#download')
-
 let colors = document.querySelector('.colors')
+
+let thin = document.querySelector('#thin')
+let thick = document.querySelector('#thick')
+let lineWidth = 5
+
+thin.addEventListener('click', function() {
+  thin.classList.add('active')
+  thick.classList.remove('active')
+  lineWidth = 5
+})
+
+thick.addEventListener('click', function() {
+  thin.classList.remove('active')
+  thick.classList.add('active')
+  lineWidth = 10
+})
 
 clear.addEventListener('click', function() {
   context.clearRect(0, 0, canvas.width, canvas.height)
@@ -158,7 +174,7 @@ function setCanvasSize() {
 function drawLine(x1, y1, x2, y2) {
   context.beginPath()
   context.moveTo(x1, y1)
-  context.lineWidth = 5
+  context.lineWidth = lineWidth
   context.lineTo(x2, y2)
   context.closePath()
   context.stroke()
